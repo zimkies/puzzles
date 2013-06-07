@@ -27,8 +27,6 @@ def mindistance(word, dictionary):
     #Make sure to add base case of empty word
     if dictionary.has_key(word):
         return dictionary[word]
-    
-        
 
 def distance(w1, w2, dict):
     """Calculates the distance between 2 words"""

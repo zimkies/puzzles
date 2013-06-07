@@ -1,4 +1,8 @@
-'''Functionality for clockremover. Start with a clock of n numbers, and  number k. Go around the clock, removing the k'th element each time until you remain with only 1 element. Return the number that is remaining'''
+'''
+FIXME: still needs to be solved
+Functionality for clockremover. Start with a clock of n numbers, and  number k. Go around the clock, removing the k'th element each time until you remain with only 1 element. Return the number that is remaining
+
+'''
 import sys 
 
 def dumb_clock_remover(n,k):
