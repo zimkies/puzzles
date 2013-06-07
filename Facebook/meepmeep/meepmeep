@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+""" gataca """
+import sys
+import math
+
+class Sequence():
+    
+    def __init__(self, start, stop, score):
+        self.start = start
+        self.stop = stop
+        self.score = score
+
+def meepmeep(filename):
+    file = open(filename)
+    file.close()
+    x = math.sqrt(4)
+    print "Meep meep!"
+
+if __name__ == "__main__":
+    # Usage
+    if (len(sys.argv) != 2):
+        sys.exit("Usage: meepmeep inputfile")
+    meepmeep((sys.argv[1]))
+
+
+# Version 2:
+# 
+#"""Meep meep!"""
+#import sys
+#
+#def meepmeep(filename):
+#    file = open(filename)
+#    file.close()
+#    print "Meep meep!"
+#
+#if __name__ == "__main__":
+#    # Usage
+#    if (len(sys.argv) != 2):
+#        sys.exit("Usage: meepmeep inputfile")
+#    meepmeep((sys.argv[1]))
+
+## Version 1
+### WORKS
+#print "Meep meep!"

@@ -1,0 +1,76 @@
+#!/usr/bin/python
+
+# Note that one enterpretation of the question may mean the graph is unconnected
+# In that case, I need to add code to search each component and then check if
+# a solution exists such that any combination of components adds to the same answer.
+
+""" liarliar """
+import sys
+
+class Person():
+    
+    def __init__(self, name, neighbours):
+        self.name = name
+        self.neighbours = neighbours
+        self.honesty = 0
+
+def liars(filename):
+    """Prints the number of liars and honest people in decreasing sorted order"""
+    file = open(filename)
+    n = int(file.readline())
+    if (n == 0):
+        sys.exit("0 0")
+    
+    # The graph
+    people = {}
+    
+    # Collect data and form graph
+    for i in range(n):
+        accuser, j = file.readline().strip().split()
+        accused = set([])
+        for p in range(int(j)):
+            accused.add(file.readline().strip())
+        people[accuser] = Person(accuser, accused)
+
+    # Make the graph into an undirected graph
+    complete_graph(people)
+
+    # Do a BFS
+    stack = []
+    p = people[people.keys()[0]]
+    p.honesty = 1
+    stack.append(p)
+    honest, liar = 1,0
+    
+    while (len(stack) > 0):
+        p = stack.pop()
+
+        # add the children to the stack
+        for child in p.neighbours:
+            c = people[child]
+            if (c.honesty == 0):
+                c.honesty = p.honesty*-1
+                if (c.honesty >0):
+                    honest += 1
+                else:
+                    liar += 1
+                stack.append(c)
+    
+    # Return a sorted answer
+    answer = [honest, liar]
+    answer.sort()
+    file.close()
+    print answer[1], answer[0]
+        
+def complete_graph(graph):
+    """ Takes a directed graph and turns it into a undirected graph"""
+    for k in graph.keys():
+        for v in graph[k].neighbours:
+            graph[v].neighbours.add(k)
+            
+
+if __name__ == "__main__":
+    # Usage
+    if (len(sys.argv) != 2):
+        sys.exit("Usage: ./liarliar inputfile")
+    liars(sys.argv[1])
