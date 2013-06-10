@@ -1,4 +1,11 @@
+'''
+We want to find the shortest path between two points in a special grid. We can travel between adjacent squares in a single move, but we can also travel between cells of the same type (there are 10 types) in a single move no matter the distance between them.
 
+How can we find the the number of steps required to travel between two points for a grid of up to 100x100 in size?
+
+I believe W is wall, S is start, E is end, and 0 is a normal space, and all other numbers are portals
+
+'''
 import sys
 import math
 import numpy

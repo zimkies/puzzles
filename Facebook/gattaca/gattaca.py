@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
+# This version passes the Facebook timing test at 3579.704 ms
 """ gataca """
 import sys
-import numpy
-
+#import numpy
 class Sequence():
     
     def __init__(self, start, stop, score):
@@ -17,12 +17,12 @@ def gataca(filename):
     dnalength = int(file.readline())
     
     # The DNA
-    for i in range(int(numpy.ceil(dnalength/80.0))): file.readline()
+    for i in range(int(ceiling(dnalength/80.0))): file.readline()
     
     # Collect sequence data
     seqlength = int(file.readline())
     sequences = {}
-    dna = numpy.zeros(dnalength + 1, int) #add a one so that index -1 gives a 0
+    dna = [0]*(dnalength +1)#numpy.zeros(dnalength + 1, int) #add a one so that index -1 gives a 0
     
     # Store the sequences
     for i in range(seqlength):
@@ -43,10 +43,18 @@ def gataca(filename):
     file.close()
     return
     
+def ceiling(number):
+    if (int(number)<number):
+        return int(number+1)
+    else:
+        return int(number)
+        
+    
     
     
 if __name__ == "__main__":
     # Usage
     if (len(sys.argv) != 2):
-        sys.exit("Usage: python gataca.py inputfile")
+        sys.exit("Usage: gataca inputfile")
     gataca((sys.argv[1]))
+    
